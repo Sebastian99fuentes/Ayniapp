@@ -3,7 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-
+  {
+    path: ' ',
+    redirectTo:'info',
+    pathMatch:'full',
+  },
   {
     path: 'info',
     loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
@@ -17,9 +21,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/foros/foros.module').then( m => m.ForosPageModule)
   },
   {
+    path: 'foros/:id',
+    loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
+  },
+  {
     path: 'ayuda',
     loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
-  }
+  },
+
 
 
 ];

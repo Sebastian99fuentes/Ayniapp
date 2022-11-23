@@ -1,51 +1,22 @@
-<link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
-<script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
-<ion-header [translucent]="true" >
-  <ion-toolbar>
-    <ion-title>
-      <h3>Foro</h3>
-    </ion-title>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> trending movies</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content>
-  <ion-grid class="ion-text-center">
+<ion-list>
+  <ion-item button *ngFor="let item of movies" [routerLink]="[item.id]" >
+<ion-label>
+  {{item.title}}
+  <p>{{item.release_date | date:'y'}}</p>
+</ion-label>
+<ion-badge slot="end">{{item.vote_average}}</ion-badge>
+  </ion-item>
+</ion-list>
 
-    <ion-row class="ion-margin">
-      <ion-col>
-        <ion-title>
-          <ion-text color="default">
-          Tema
-          </ion-text>
-        </ion-title>
-      </ion-col>
-    </ion-row>
-
-    <ion-row class="header-row">
-      <ion-col>
-        <ion-text>
-      
-        </ion-text>
-      </ion-col>
-     
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-text>
-            19/10/2020
-        </ion-text>
-      </ion-col>
-
-          <ion-col>
-            <ion-button>Default</ion-button>
-        </ion-col>
-    </ion-row>
-
-  </ion-grid>
+<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.."></ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>
-
-<script>
-
-
-
-</script>

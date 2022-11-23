@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ForosPageRoutingModule } from './foros-routing.module';
+import { ForosUnitariosPageRoutingModule } from './foros-unitarios-routing.module';
 
-import { ForosPage } from './foros.page';
+import { ForosUnitariosPage } from './foros-unitarios.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ForosPageRoutingModule
+    ForosUnitariosPageRoutingModule
   ],
-  declarations: [ForosPage]
+  declarations: [ForosUnitariosPage]
 })
-export class ForosPageModule {}
+export class ForosUnitariosPageModule {}

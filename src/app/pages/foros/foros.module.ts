@@ -17,4 +17,5 @@ import { ForosPage } from './foros.page';
   ],
   declarations: [ForosPage]
 })
+
 export class ForosPageModule {}
