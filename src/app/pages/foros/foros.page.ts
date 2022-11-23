@@ -18,7 +18,6 @@ export class ForosPage implements OnInit {
   ngOnInit() {
    this.loadMovies();
   }
-
   async loadMovies(event?){
 
     const loading =await this.loadingCtrl.create({

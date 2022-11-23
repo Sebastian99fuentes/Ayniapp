@@ -2,6 +2,12 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title> trending movies</ion-title>
+    <div id="userButton">
+      <ion-tab-button tab="usuarios" >
+        <ion-label>Login</ion-label>
+        <ion-icon name="log-in-outline"></ion-icon>
+      </ion-tab-button>
+    </div>
   </ion-toolbar>
 </ion-header> 
 
@@ -16,7 +22,7 @@
   </ion-item>
 </ion-list>
 
-<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+<!-- <ion-infinite-scroll (ionInfinite)="loadMore($event)">
 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.."></ion-infinite-scroll-content>
-</ion-infinite-scroll>
+</ion-infinite-scroll> -->
 </ion-content>
