@@ -33,7 +33,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
   },
   {
-    path: 'usurarios',
+    path: 'usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },
 
