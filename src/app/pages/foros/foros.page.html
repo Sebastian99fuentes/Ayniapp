@@ -2,9 +2,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title> trending movies</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/foro-crear"></ion-back-button>
-          Añadir Foro</ion-buttons>
   </ion-toolbar>
 </ion-header> 
 
@@ -19,19 +16,14 @@
   </ion-item>
 </ion-list>
 
-<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+<!-- <ion-infinite-scroll (ionInfinite)="loadMore($event)">
 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.."></ion-infinite-scroll-content>
 </ion-infinite-scroll>
-</ion-content> 
-
-
-
-<!-- <ion-header>
+</ion-content> --> 
+<!-- 
+<ion-header>
   <ion-toolbar color="primary">
-    <ion-title> Ultimos Foros</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/foro-crear"></ion-back-button>
-          Añadir Foro</ion-buttons>
+    <ion-title> Foros </ion-title>
   </ion-toolbar>
 </ion-header> 
 
@@ -40,13 +32,7 @@
   <ion-item button *ngFor="let item of foros" [routerLink]="[item.id]" >
 <ion-label>
   {{item.topic}}
- 
+  <p>{{item.content }}</p>
 </ion-label>
-<ion-badge slot="end">{{item.content}}</ion-badge>
   </ion-item>
-</ion-list>
-
-<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.."></ion-infinite-scroll-content>
-</ion-infinite-scroll>
-</ion-content> -->
+</ion-list> -->
