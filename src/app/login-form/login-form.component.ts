@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { RegisterComponent } from '../register/register.component'; 
 import { RecoverComponent } from '../recover/recover.component';
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { ApiUsuariosService } from '../services/api-usuarios.service';
 
 @Component({
   selector: 'app-login-form',
@@ -9,11 +11,34 @@ import { RecoverComponent } from '../recover/recover.component';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+  constructor(private apiUsuarios: ApiUsuariosService,
+                public formBuilder: FormBuilder,
+                private zone: NgZone,) {
+                  this.loginForm = this.formBuilder.group({
+                    userMail: [''],
+                    password: ['']
+                  })
+                }
 
   ngOnInit() {}
-register = RegisterComponent
-recover = RecoverComponent
+
+  onSubmit() {
+    if (!this.loginForm.valid) {
+      return false;
+    } else {
+      this.apiUsuarios.loginUser(this.loginForm.value)
+        .subscribe((response) => {
+          this.zone.run(() => {
+            this.loginForm.reset();
+          })
+        });
+    }
+  }
+
+  register = RegisterComponent
+  recover = RecoverComponent
+
 }
 
 
