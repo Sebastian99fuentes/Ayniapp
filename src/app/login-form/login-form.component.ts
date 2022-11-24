@@ -3,6 +3,8 @@ import { RegisterComponent } from '../register/register.component';
 import { RecoverComponent } from '../recover/recover.component';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { ApiUsuariosService } from '../services/api-usuarios.service';
+import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-login-form',
@@ -12,16 +14,18 @@ import { ApiUsuariosService } from '../services/api-usuarios.service';
 export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor(private apiUsuarios: ApiUsuariosService,
+  constructor(private router:Router, private apiUsuarios: ApiUsuariosService,
                 public formBuilder: FormBuilder,
-                private zone: NgZone,) {
+                private zone: NgZone,
+                private storage:Storage) {
                   this.loginForm = this.formBuilder.group({
                     userMail: [''],
                     password: ['']
                   })
                 }
 
-  ngOnInit() {}
+  ngOnInit() {this.storage.create();}
+
 
   onSubmit() {
     if (!this.loginForm.valid) {
@@ -31,6 +35,9 @@ export class LoginFormComponent implements OnInit {
         .subscribe((response) => {
           this.zone.run(() => {
             this.loginForm.reset();
+            this.storage.set("id", response.token)
+            this.router.navigate(['foros'])
+            // this.databaseService.addID(response.token)
           })
         });
     }

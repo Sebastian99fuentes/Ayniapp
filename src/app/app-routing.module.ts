@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ForosPageModule } from './pages/foros/foros.module';
 
 const routes: Routes = [
-
   {
     path: '',
     redirectTo:'info',
