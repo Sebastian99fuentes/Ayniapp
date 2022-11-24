@@ -1,11 +1,21 @@
 
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title> trending movies</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/foro-crear"></ion-back-button>
+      Crear Foro
+          </ion-buttons>
+          
   </ion-toolbar>
 </ion-header> 
 
+<ion-card-content class="ion-text-center">
+   <h1>Información de todos los  foro</h1>
+     <br>   
+   
+     </ion-card-content>
 <ion-content>
+
 <ion-list>
   <ion-item button *ngFor="let item of movies" [routerLink]="[item.id]" >
 <ion-label>
@@ -15,11 +25,15 @@
 <ion-badge slot="end">{{item.vote_average}}</ion-badge>
   </ion-item>
 </ion-list>
-
-<!-- <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+<!-- 
+<ion-infinite-scroll (ionInfinite)="loadMore($event)">
 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data.."></ion-infinite-scroll-content>
-</ion-infinite-scroll>
-</ion-content> --> 
+</ion-infinite-scroll> -->
+</ion-content> 
+
+
+
+
 <!-- 
 <ion-header>
   <ion-toolbar color="primary">

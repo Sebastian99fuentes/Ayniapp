@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   {
-    path: ' ',
+    path: '',
     redirectTo:'info',
     pathMatch:'full',
   },
@@ -32,19 +32,10 @@ const routes: Routes = [
     path: 'foros/:id',
     loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
   },
-
-=======
   {
-    path: 'ayuda',
-    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
-  },
-  {
-    path: 'usuarios',
+    path: 'usurarios',
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },
->>>>>>> 5d81d63fdbb6d4d54e604d837d560f2eccbbe4ff
-
-
 
 
 ];
