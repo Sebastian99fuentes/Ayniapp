@@ -11,10 +11,10 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private router:Router, private apiUsuarios: ApiUsuariosService,
+  constructor(private router: Router, private apiUsuarios: ApiUsuariosService,
     public formBuilder: FormBuilder,
     private zone: NgZone,
-    private storage:Storage) {
+    private storage: Storage) {
       this.registerForm = this.formBuilder.group({
         userName: [''],
         userMail: [''],
