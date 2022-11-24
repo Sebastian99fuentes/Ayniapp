@@ -8,6 +8,8 @@ export const environment = {
   apiKey:'d289dbcf23c196fd4f5ea906a824d757',
   baseUrl:'https://api.themoviedb.org/3',
   imagenes:'http://image.tmdb.org/t/p',
+
+  urlAyni:'http://localhost:5199/api/Forum'
 };
 
 /*

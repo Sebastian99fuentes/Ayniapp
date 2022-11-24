@@ -17,6 +17,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/como-reconocer/como-reconocer.module').then( m => m.ComoReconocerPageModule)
   },
   {
+    path: 'ayuda',
+    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
+  },
+  {
+    path: 'foro-crear',
+    loadChildren: () => import('./pages/foro-crear/foro-crear.module').then( m => m.ForoCrearPageModule)
+  },
+  {
     path: 'foros',
     loadChildren: () => import('./pages/foros/foros.module').then( m => m.ForosPageModule)
   },
@@ -24,10 +32,12 @@ const routes: Routes = [
     path: 'foros/:id',
     loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
   },
-  {
-    path: 'ayuda',
-    loadChildren: () => import('./pages/ayuda/ayuda.module').then( m => m.AyudaPageModule)
-  },
+  // {
+  //   path: 'foros-unitarios',
+  //   loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
+  // },
+
+
 
 
 

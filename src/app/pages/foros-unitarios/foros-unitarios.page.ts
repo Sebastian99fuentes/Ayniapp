@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TargetLocator } from 'selenium-webdriver';
+import { Comentario } from 'src/app/modelos/comentario';
 import { ForoservService } from 'src/app/services/foroserv.service';
 @Component({
   selector: 'app-foros-unitarios',
@@ -9,7 +9,9 @@ import { ForoservService } from 'src/app/services/foroserv.service';
 })
 export class ForosUnitariosPage implements OnInit {
 
-  movie = null;
+  movie;
+  foro;
+comentario: Comentario = new Comentario();
 
   constructor(private route: ActivatedRoute, private forosService: ForoservService) { }
 
@@ -23,5 +25,16 @@ export class ForosUnitariosPage implements OnInit {
   }
   agregarComentario(){
     window.open(this.movie.homepage);
+  }
+
+
+  agregarComent( id: string, coment: Comentario): void{
+    this.forosService.updateForoComentario(id, coment).subscribe(res => {
+      if(res){
+        alert(` se ha agregado con exito!`);
+      } else {
+        alert('Error! :(');
+      }
+    });
   }
 }

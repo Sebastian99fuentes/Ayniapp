@@ -11,8 +11,10 @@ import { environment } from 'src/environments/environment';
 export class ForosPage implements OnInit {
 
   movies =[];
+  foros =[];
+
   currentPage= 1;
-  imageBaseUrl = environment.imagenes;
+
   constructor(private foroservService: ForoservService , private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
@@ -39,6 +41,24 @@ export class ForosPage implements OnInit {
       }
   });
   }
+  async loadForos(event?){
+
+    const loading =await this.loadingCtrl.create({
+
+      message:'loading..',
+      spinner: 'bubbles',
+    });
+    await loading.present();
+
+    this.foroservService.getForosapi().subscribe((res)=>{
+      loading.dismiss();
+      this.foros.push(...res.results);
+      console.log(res);
+
+      event?.target.complete();
+  });
+  }
+
   loadMore(event: InfiniteScrollCustomEvent ){
     this.currentPage++;
     this.loadMovies(event);
