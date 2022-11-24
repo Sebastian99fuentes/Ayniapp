@@ -37,7 +37,6 @@ export class LoginFormComponent implements OnInit {
             this.loginForm.reset();
             this.storage.set("id", response.token)
             this.router.navigate(['foros'])
-            // this.databaseService.addID(response.token)
           })
         });
     }

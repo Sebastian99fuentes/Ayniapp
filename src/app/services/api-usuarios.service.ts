@@ -7,6 +7,11 @@ export class loginRequest {
   userMail: string;
   password: string;
 }
+export class registerRequest {
+  userName: string;
+  userMail: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +19,7 @@ export class loginRequest {
 export class ApiUsuariosService {
 
   apiUrl = 'http://localhost:5199/api/UserModel/login';
+  apiUrlReg = 'http://localhost:5199/api/UserModel/login';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,6 +31,13 @@ export class ApiUsuariosService {
     return this.httpClient.post<loginRequest>(this.apiUrl, JSON.stringify(user), this.httpOptions)
       .pipe(
         catchError(this.handleError<loginRequest>('Error occured'))
+      );
+  }
+
+  registerUser(user: registerRequest): Observable<any> {
+    return this.httpClient.post<registerRequest>(this.apiUrlReg, JSON.stringify(user), this.httpOptions)
+      .pipe(
+        catchError(this.handleError<registerRequest>('Error occured'))
       );
   }
 
