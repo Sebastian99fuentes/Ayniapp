@@ -32,11 +32,6 @@ const routes: Routes = [
     path: 'foros/:id',
     loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
   },
-<<<<<<< HEAD
-  // {
-  //   path: 'foros-unitarios',
-  //   loadChildren: () => import('./pages/foros-unitarios/foros-unitarios.module').then( m => m.ForosUnitariosPageModule)
-  // },
 
 =======
   {
