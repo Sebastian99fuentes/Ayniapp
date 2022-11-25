@@ -3,10 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export class loginRequest {
   userMail: string;
   password: string;
 }
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export class registerRequest {
   userName: string;
   userMail: string;
@@ -22,6 +24,7 @@ export class ApiUsuariosService {
   apiUrlReg = 'http://localhost:5199/api/UserModel/login';
 
   httpOptions = {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
@@ -47,5 +50,5 @@ export class ApiUsuariosService {
       console.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
-  }  
+  }
 }

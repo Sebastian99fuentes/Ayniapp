@@ -14,14 +14,14 @@
 <form >
   <ion-item fill="solid">
     <ion-label position="floating">Tema del Foro</ion-label>
-    <ion-input ngDefaultControl type="text" [(ngModel)]="fobj.id" name="id"></ion-input>
+    <ion-input ngDefaultControl type="text" [(ngModel)]="fobj.topic" name="topic"></ion-input>
 
     <ion-note slot="helper">Ingresa el Tema del Foro</ion-note>
     <ion-note slot="error">Invalid Foro</ion-note>
   </ion-item>
   <ion-item fill="solid">
     <ion-label position="floating">Contenido del foro</ion-label>
-    <ion-input ngDefaultControl type="text" [(ngModel)]="fobj.nombre" name="nombre"></ion-input>
+    <ion-input ngDefaultControl type="text" [(ngModel)]="fobj.content" name="content"></ion-input>
     
     <ion-note slot="helper">Enter a valid content</ion-note>
     <ion-note slot="error">Invalid content</ion-note>

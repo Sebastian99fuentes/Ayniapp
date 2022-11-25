@@ -9,18 +9,11 @@ import { Comentario } from '../modelos/comentario';
 export interface ApiResult{
   page: number;
   results: any[];
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  total_pages: number;
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-  ​total_results: number;
+  resultsforo: any[];
+
 
 }
 
-// export interface Foro{
-//   id?: string;
-//   nombre: string;
-
-// }
 
 @Injectable({
   providedIn: 'root'
@@ -49,14 +42,20 @@ getForosapi( ): Observable<ApiResult>{
 getForosDetallesapi(id: string){
 
   return this.http.get(`${environment.urlAyni}/id?id=${id}`);
+
+}
+getComentariosapi(id: string){
+
+  return this.http.get(`${environment.urlAyni}/padre/id?id=${id}`);
+
 }
 postForo(foro: Forito): Observable<Forito>{
 
   return this.http.post<Forito>(`${environment.urlAyni}`,foro);
 }
-updateForoComentario(id: string, comentario: Comentario): Observable<Comentario>{
+postForoComentario(comentario: Comentario): Observable<Comentario>{
 
-  return this.http.put<Comentario>(`${environment.urlAyni}/id?id=${id}`,comentario);
+  return this.http.put<Comentario>(`${environment.urlAyni}`,comentario);
 }
 
 }

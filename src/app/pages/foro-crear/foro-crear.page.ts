@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ForoservService } from 'src/app/services/foroserv.service';
 import { Forito } from 'src/app/modelos/foros';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-foro-crear',
@@ -14,12 +15,20 @@ export class ForoCrearPage implements OnInit {
 
  fobj: Forito=new Forito();
 
-  constructor(private foroservService: ForoservService) { }
+  constructor(private foroservService: ForoservService, private storage: Storage ) { }
 
   ngOnInit(){
+    this.storage.create();
   }
 
   agregarForo(foroobj: Forito): void{
+    //  this.storage.get('id');
+    //  console.log(     this.storage.get('id'));
+     this.storage.get('id').then((val)=>{
+      console.log(val);
+      foroobj.userId=val.token;
+      console.log(foroobj);
+     });
     this.foroservService.postForo(foroobj).subscribe(res => {
       console.log(foroobj);
       if(res){
@@ -32,8 +41,8 @@ export class ForoCrearPage implements OnInit {
   }
 
   clear(){
-    this.fobj.id= null;
-    this.fobj.nombre = null;
+    this.fobj.topic= null;
+    this.fobj.content = null;
 
   }
 }

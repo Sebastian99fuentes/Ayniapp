@@ -9,8 +9,8 @@ import { ForoservService } from 'src/app/services/foroserv.service';
 })
 export class ForosUnitariosPage implements OnInit {
 
-  movie;
   foro;
+  comentarios: any=[];
 comentario: Comentario = new Comentario();
 
   constructor(private route: ActivatedRoute, private forosService: ForoservService) { }
@@ -18,18 +18,27 @@ comentario: Comentario = new Comentario();
   ngOnInit() {
     const id= this.route.snapshot.paramMap.get('id');
     console.log(id);
-    this.forosService.getForosDetalles(id).subscribe((res)=>{
-         console.log(res);
-        this.movie = res;
-    });
-  }
-  agregarComentario(){
-    window.open(this.movie.homepage);
+    // this.forosService.getForosDetalles(id).subscribe((res)=>{
+    //      console.log(res);
+    //     this.movie = res;
+    // });
+    this.forosService.getForosDetallesapi(id).subscribe((res)=>{
+      console.log(res);
+     this.foro = res;
+ });
+ this.forosService.getComentariosapi(id).subscribe((res)=>{
+  console.log(res);
+  this.comentarios = res;
+});
+
   }
 
-
-  agregarComent( id: string, coment: Comentario): void{
-    this.forosService.updateForoComentario(id, coment).subscribe(res => {
+  agregarComent(coment: Comentario): void{
+     const id= this.route.snapshot.paramMap.get('id');
+    coment.fatherId= id;
+    coment.topic=this.foro.topic;
+    console.log(coment);
+    this.forosService.postForoComentario(coment).subscribe(res => {
       if(res){
         alert(` se ha agregado con exito!`);
       } else {

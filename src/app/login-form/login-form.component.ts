@@ -1,27 +1,30 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { RegisterComponent } from '../register/register.component'; 
+import { RegisterComponent } from '../register/register.component';
 import { RecoverComponent } from '../recover/recover.component';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ApiUsuariosService } from '../services/api-usuarios.service';
 import { Storage } from '@ionic/storage-angular';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
 
+
+export class LoginFormComponent implements OnInit {
+  register = RegisterComponent;
+  recover = RecoverComponent;
   loginForm: FormGroup;
-  constructor(private router:Router, private apiUsuarios: ApiUsuariosService,
+  constructor(private router: Router, private apiUsuarios: ApiUsuariosService,
                 public formBuilder: FormBuilder,
                 private zone: NgZone,
-                private storage:Storage) {
+                private storage: Storage) {
                   this.loginForm = this.formBuilder.group({
                     userMail: [''],
                     password: ['']
-                  })
+                  });
                 }
 
   ngOnInit() {this.storage.create();}
@@ -35,15 +38,14 @@ export class LoginFormComponent implements OnInit {
         .subscribe((response) => {
           this.zone.run(() => {
             this.loginForm.reset();
-            this.storage.set("id", response.token)
-            this.router.navigate(['foros'])
-          })
+            this.storage.set('id',response);
+            this.router.navigate(['foros']);
+          });
         });
     }
   }
 
-  register = RegisterComponent
-  recover = RecoverComponent
+
 
 }
 

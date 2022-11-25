@@ -1,8 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { ApiUsuariosService } from '../services/api-usuarios.service';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
         userName: [''],
         userMail: [''],
         password: ['']
-      })
+      });
     }
 
   ngOnInit() {}
@@ -31,9 +31,9 @@ export class RegisterComponent implements OnInit {
         .subscribe((response) => {
           this.zone.run(() => {
             this.registerForm.reset();
-            this.storage.set("id", response.token)
-            this.router.navigate(['foros'])
-          })
+            this.storage.set('id', response.token);
+            this.router.navigate(['foros']);
+          });
         });
     }
   }

@@ -1,31 +1,33 @@
+
+<!-- Error de visual estudio si aparece esto en rojo el programa funciona 100% -->
 <ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button default-href="#"></ion-back-button>
-        </ion-buttons>
-      <ion-title>Registrate</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button default-href="#"></ion-back-button>
+      </ion-buttons>
+    <ion-title>Registrate</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmitReg()">
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label position="stacked">Nombre</ion-label>
-        <ion-input formControlName="userName" [clearOnEdit]="true"  type="text" placeholder="username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Correo Electrónico</ion-label>
-        <ion-input formControlName="userMail" [clearOnEdit]="true"  type="email" placeholder="email@domain.com" ngModel email></ion-input>
-        <ion-note slot="helper">Enter a valid email</ion-note>
-        <ion-note slot="error">Invalid email</ion-note>
-      </ion-item> 
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input formControlName="password" type="password" placeholder="Ingrese una Contraseña"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-button type="submit">Registrarse</ion-button>
-      </ion-item>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmitReg()">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-input formControlName="userName" [clearOnEdit]="true"  type="text" placeholder="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Correo Electrónico</ion-label>
+      <ion-input formControlName="userMail" [clearOnEdit]="true"  type="email" placeholder="email@domain.com" ngModel email></ion-input>
+      <ion-note slot="helper">Enter a valid email</ion-note>
+      <ion-note slot="error">Invalid email</ion-note>
+    </ion-item> 
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input formControlName="password" type="password" placeholder="Ingrese una Contraseña"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button type="submit">Registrarse</ion-button>
+    </ion-item>
 </ion-list>
-  </form>
+</form>
 </ion-content>

@@ -10,37 +10,16 @@ import { environment } from 'src/environments/environment';
 })
 export class ForosPage implements OnInit {
 
-  movies =[];
-  foros =[];
+  foros: any=[];
 
-  currentPage= 1;
 
   constructor(private foroservService: ForoservService , private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
-   this.loadMovies();
+  this.loadForos();
   }
-  async loadMovies(event?){
 
-    const loading =await this.loadingCtrl.create({
-
-      message:'loading..',
-      spinner: 'bubbles',
-    });
-    await loading.present();
-
-    this.foroservService.getForos(this.currentPage).subscribe((res)=>{
-      loading.dismiss();
-      this.movies.push(...res.results);
-      console.log(res);
-
-      event?.target.complete();
-      if(event){
-        event.target.disabled=res.total_pages===this.currentPage;
-      }
-  });
-  }
-  async loadForos(event?){
+  async loadForos(){
 
     const loading =await this.loadingCtrl.create({
 
@@ -51,16 +30,10 @@ export class ForosPage implements OnInit {
 
     this.foroservService.getForosapi().subscribe((res)=>{
       loading.dismiss();
-      this.foros.push(...res.results);
+      this.foros=res;
       console.log(res);
 
-      event?.target.complete();
   });
   }
 
-  loadMore(event: InfiniteScrollCustomEvent ){
-    this.currentPage++;
-    this.loadMovies(event);
-
-  }
 }

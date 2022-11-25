@@ -1,6 +1,8 @@
 export  class  Forito{
-    id?: string;
-    nombre: string;
+    id: '';
+    topic: '';
+    content: '';
+    userId: '';
   }
   // {
   //   "id": "string",
