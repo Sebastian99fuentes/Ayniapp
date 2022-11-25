@@ -16,3 +16,5 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 }
+
+// Codigo para poder ejecutar en android

@@ -10,12 +10,12 @@
               <ion-label>Login</ion-label>
               <ion-icon name="log-in-outline"></ion-icon>
             </ion-tab-button>
-          </div>  
-    <ion-title> Foros del momento</ion-title>
-    
+          </div>      
   </ion-toolbar>
 </ion-header> 
-
+<ion-card-content class="ion-text-center">
+  <h3>Foros</h3>
+  </ion-card-content>
 <ion-content>
   <ion-list>
     <ion-item button *ngFor="let item of forospadre" [routerLink]="[item.id]" >
