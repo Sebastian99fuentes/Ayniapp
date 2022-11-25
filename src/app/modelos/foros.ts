@@ -1,9 +1,13 @@
 export  class  Forito{
-    id: '';
-    topic: '';
-    content: '';
-    userId: '';
+  [''];
+    // topic: string;
+    // content: string;
+    // userId: string;
+     topic:   [''];
+    content:   [''];
+    userId:   [''];
   }
+
   // {
   //   "id": "string",
   //   "topic": "string",

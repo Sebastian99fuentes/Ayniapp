@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { InfiniteScrollCustomEvent, IonInfiniteScroll, LoadingController } from '@ionic/angular';
 import { Comentario } from 'src/app/modelos/comentario';
+import { ApiUsuariosService } from 'src/app/services/api-usuarios.service';
 import { ForoservService } from 'src/app/services/foroserv.service';
+import { Storage } from '@ionic/storage-angular';
 @Component({
   selector: 'app-foros-unitarios',
   templateUrl: './foros-unitarios.page.html',
@@ -13,15 +16,18 @@ export class ForosUnitariosPage implements OnInit {
   comentarios: any=[];
 comentario: Comentario = new Comentario();
 
-  constructor(private route: ActivatedRoute, private forosService: ForoservService) { }
+  constructor(private route: ActivatedRoute, private forosService: ForoservService, private apiservice: ApiUsuariosService,
+    private storage: Storage,private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
+
+    this.storage.create();
+    this.cargaData();
+  }
+
+  cargaData(){
     const id= this.route.snapshot.paramMap.get('id');
     console.log(id);
-    // this.forosService.getForosDetalles(id).subscribe((res)=>{
-    //      console.log(res);
-    //     this.movie = res;
-    // });
     this.forosService.getForosDetallesapi(id).subscribe((res)=>{
       console.log(res);
      this.foro = res;
@@ -32,18 +38,31 @@ comentario: Comentario = new Comentario();
 });
 
   }
+  async agregarComent(coment: Comentario){
 
-  agregarComent(coment: Comentario): void{
+    const loading =await this.loadingCtrl.create({
+
+      message:'loading..',
+      spinner: 'bubbles',
+    });
+    await loading.present();
      const id= this.route.snapshot.paramMap.get('id');
     coment.fatherId= id;
     coment.topic=this.foro.topic;
     console.log(coment);
-    this.forosService.postForoComentario(coment).subscribe(res => {
-      if(res){
+    this.storage.get('id').then((val)=>{
+      console.log(val);
+      coment.userId=val.token;
+      console.log(coment);
+     });
+     loading.dismiss();
+     this.apiservice.postForoComentario(coment).subscribe(res => {
+      if (res) {
         alert(` se ha agregado con exito!`);
       } else {
         alert('Error! :(');
       }
     });
+    this.cargaData();
   }
 }

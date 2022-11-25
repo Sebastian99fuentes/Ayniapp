@@ -35,9 +35,10 @@ const routes: Routes = [
   {
     path: 'usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
-  },  {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.component').then( m => m.RegisterComponent)
   },
 
 

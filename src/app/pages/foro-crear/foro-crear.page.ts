@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForoservService } from 'src/app/services/foroserv.service';
 import { Forito } from 'src/app/modelos/foros';
 import { Storage } from '@ionic/storage-angular';
+import { ApiUsuariosService } from 'src/app/services/api-usuarios.service';
 
 @Component({
   selector: 'app-foro-crear',
@@ -15,31 +16,27 @@ export class ForoCrearPage implements OnInit {
 
  fobj: Forito=new Forito();
 
-  constructor(private foroservService: ForoservService, private storage: Storage ) { }
+  constructor(private foroservService: ForoservService, private storage: Storage, private apiservice: ApiUsuariosService ) { }
 
   ngOnInit(){
     this.storage.create();
   }
-
   agregarForo(foroobj: Forito): void{
-    //  this.storage.get('id');
-    //  console.log(     this.storage.get('id'));
      this.storage.get('id').then((val)=>{
       console.log(val);
       foroobj.userId=val.token;
       console.log(foroobj);
      });
-    this.foroservService.postForo(foroobj).subscribe(res => {
+    this.apiservice.postForo(foroobj).subscribe(res => {
       console.log(foroobj);
       if(res){
         alert(`se ha registrado con exito!`);
         this.clear();
       } else {
-        alert('Error! :(');
+        alert('Error!');
       }
     });
   }
-
   clear(){
     this.fobj.topic= null;
     this.fobj.content = null;

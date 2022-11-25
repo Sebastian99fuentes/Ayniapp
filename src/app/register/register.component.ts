@@ -31,9 +31,9 @@ export class RegisterComponent implements OnInit {
         .subscribe((response) => {
           this.zone.run(() => {
             this.registerForm.reset();
-            this.storage.set("id", response);
+            this.storage.set('id', response);
             this.router.navigate(['foros']);
-          })
+          });
         });
     }
   }

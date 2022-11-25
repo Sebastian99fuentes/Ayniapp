@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
+import { Forito } from '../modelos/foros';
+import { Comentario } from '../modelos/comentario';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export class loginRequest {
   userMail: string;
@@ -22,7 +23,7 @@ export class ApiUsuariosService {
 
   apiUrl = 'http://localhost:5199/api/UserModel/login';
   apiUrlReg = 'http://localhost:5199/api/UserModel/register';
-
+  urlAyni = 'http://localhost:5199/api/Forum';
   httpOptions = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -40,6 +41,22 @@ export class ApiUsuariosService {
   registerUser(user: registerRequest): Observable<any> {
     return this.httpClient.post<registerRequest>(this.apiUrlReg, JSON.stringify(user), this.httpOptions)
       .pipe(
+        catchError(this.handleError<registerRequest>('Error occured'))
+      );
+  }
+
+  postForo(foro: Forito): Observable<any>{
+
+    return this.httpClient.post<Forito>(this.urlAyni,JSON.stringify(foro), this.httpOptions)
+        .pipe(
+        catchError(this.handleError<registerRequest>('Error occured'))
+      );
+  }
+
+  postForoComentario(foro: Comentario): Observable<any>{
+
+    return this.httpClient.post<Forito>(this.urlAyni,JSON.stringify(foro), this.httpOptions)
+        .pipe(
         catchError(this.handleError<registerRequest>('Error occured'))
       );
   }

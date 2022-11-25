@@ -13,6 +13,8 @@ export class ForosPage implements OnInit {
   foros: any=[];
 
 
+  forospadre: any=[];
+
   constructor(private foroservService: ForoservService , private loadingCtrl: LoadingController) { }
 
   ngOnInit() {
@@ -32,7 +34,12 @@ export class ForosPage implements OnInit {
       loading.dismiss();
       this.foros=res;
       console.log(res);
+     this.foros.forEach(element => {
+      if(element.father === null){
+        this.forospadre.push(element);
+      }
 
+ });
   });
   }
 

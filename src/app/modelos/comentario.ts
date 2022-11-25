@@ -1,10 +1,12 @@
 
 export  class  Comentario{
-    topic: 'String';
-    content: 'String';
-    userId: 'String';
-    id?: 'String';
-    fatherId = 'String';
+    topic: [''];
+    content: [''];
+    userId: [''];
+    fatherId: string;
+    // userName: [''];
+    // userMail: [''];
+    // password: [''];
   }
  // {
   //   "id": "string",
