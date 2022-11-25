@@ -28,8 +28,6 @@ export class LoginFormComponent implements OnInit {
                 }
 
   ngOnInit() {this.storage.create();}
-
-
   onSubmit() {
     if (!this.loginForm.valid) {
       return false;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,4 +14,5 @@ export class UsuariosPage implements OnInit {
   ngOnInit() {
   }
   login = LoginFormComponent
+  register = RegisterComponent
 }

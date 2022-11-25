@@ -21,7 +21,7 @@ export class registerRequest {
 export class ApiUsuariosService {
 
   apiUrl = 'http://localhost:5199/api/UserModel/login';
-  apiUrlReg = 'http://localhost:5199/api/UserModel/login';
+  apiUrlReg = 'http://localhost:5199/api/UserModel/register';
 
   httpOptions = {
     // eslint-disable-next-line @typescript-eslint/naming-convention
