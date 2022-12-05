@@ -21,12 +21,28 @@ export class ForoCrearPage implements OnInit {
   ngOnInit(){
     this.storage.create();
   }
-  agregarForo(foroobj: Forito): void{
+  async agregarForo(foroobj: Forito){
      this.storage.get('id').then((val)=>{
       console.log(val);
       foroobj.userId=val.token;
       console.log(foroobj);
+      if(foroobj.userId!=null){
+        this.addforo(foroobj);
+      }
+      else{
+        alert(`Necesitamos que ingreses con tu usuario`);
+      }
      });
+
+  }
+  clear(){
+    this.fobj.topic= null;
+    this.fobj.content = null;
+
+  }
+
+  async addforo(foroobj: Forito){
+
     this.apiservice.postForo(foroobj).subscribe(res => {
       console.log(foroobj);
       if(res){
@@ -36,11 +52,6 @@ export class ForoCrearPage implements OnInit {
         alert('Error!');
       }
     });
-  }
-  clear(){
-    this.fobj.topic= null;
-    this.fobj.content = null;
-
   }
 }
 

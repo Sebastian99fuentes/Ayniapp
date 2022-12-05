@@ -37,10 +37,11 @@ comentario: Comentario = new Comentario();
   this.comentarios = res;
 });
 
-  }
+}
+
   async agregarComent(coment: Comentario){
 
-    const loading =await this.loadingCtrl.create({
+    const loading = await this.loadingCtrl.create({
 
       message:'loading..',
       spinner: 'bubbles',
@@ -50,19 +51,28 @@ comentario: Comentario = new Comentario();
     coment.fatherId= id;
     coment.topic=this.foro.topic;
     console.log(coment);
-    this.storage.get('id').then((val)=>{
+     this.storage.get('id').then((val)=>{
       console.log(val);
       coment.userId=val.token;
       console.log(coment);
      });
-     loading.dismiss();
-     this.apiservice.postForoComentario(coment).subscribe(res => {
+     await loading.dismiss();
+    if(coment.userId!= null){
+           await this.addcomend(coment);
+      this.cargaData();
+    }
+    else{
+      alert(`Necesitamos que ingreses con tu usuario`);
+    }
+  }
+
+  async addcomend(coment: Comentario){
+    this.apiservice.postForoComentario(coment).subscribe(res => {
       if (res) {
         alert(` se ha agregado con exito!`);
       } else {
-        alert('Error! :(');
+        alert('Error!');
       }
     });
-    this.cargaData();
   }
 }

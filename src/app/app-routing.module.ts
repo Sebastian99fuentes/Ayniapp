@@ -39,7 +39,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.component').then( m => m.RegisterComponent)
+  },  {
+    path: 'credito',
+    loadChildren: () => import('./pages/credito/credito.module').then( m => m.CreditoPageModule)
   },
+
 
 
 

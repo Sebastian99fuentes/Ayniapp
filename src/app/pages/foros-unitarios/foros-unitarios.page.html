@@ -7,47 +7,41 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-card-content class="ion-text-center">
-  Información
-     <br>   
-   
-     </ion-card-content>
-<ion-content>
-<ion-card>  
-  <ion-card-header>
-    <br>
-    <br>
-    <ion-card-title>{{foro?.topic}}</ion-card-title>
-    <ion-card-subtitle>{{foro?.content}}</ion-card-subtitle>
-  </ion-card-header>
-</ion-card>
+
+<ion-content [fullscreen]="true" class="ion-padding"  class="ion-text-center">
+
+  <ion-card>  
+    <ion-card-header>
+      <br>
+      Información
+      <br>   
+    
+      <br>
+      <ion-card-title>{{foro?.topic}}</ion-card-title>
+      <ion-card-subtitle>{{foro?.content}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  Comentarios
+  <br>   
+  <ion-list>
+   <ion-item button *ngFor="let item of comentarios" >
+ <ion-label>
+   <p>{{item.content}}</p>
+ </ion-label>
+   </ion-item>
+ </ion-list>
+ Agrega tu Comentario
+ <br>   
+
+ <ion-footer>
+   <ion-item>
+     <ion-textarea placeholder="Escribe tu comentario aqui" [autoGrow]="true" [(ngModel)]="comentario.content" name="content"
+       >
+     </ion-textarea>
+   </ion-item>
+   <ion-button color="success"  expand="full" (click)="agregarComent(comentario)">
+     agregar Comentario
+   </ion-button>
+ </ion-footer>
 </ion-content>
 
-
-<ion-card-content class="ion-text-center">
-  Comentarios
-     <br>   
-     <ion-list>
-      <ion-item button *ngFor="let item of comentarios" >
-    <ion-label>
-      <p>{{item.content}}</p>
-    </ion-label>
-      </ion-item>
-    </ion-list>
-</ion-card-content>
-
-<ion-card-content class="ion-text-center">
-Agrega tu Comentario
-  <br>   
-  </ion-card-content>
-  
-<ion-footer>
-  <ion-item>
-    <ion-textarea placeholder="Escribe tu comentario aqui" [autoGrow]="true" [(ngModel)]="comentario.content" name="content"
-      >
-    </ion-textarea>
-  </ion-item>
-  <ion-button color="success"  expand="full" (click)="agregarComent(comentario)">
-    agregar Comentario
-  </ion-button>
-</ion-footer>
